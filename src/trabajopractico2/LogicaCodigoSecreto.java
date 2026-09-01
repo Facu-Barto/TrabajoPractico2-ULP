@@ -1,12 +1,15 @@
 package trabajopractico2;
 
+import java.util.Random;
+
 public class LogicaCodigoSecreto {
     private int codigoSecreto;
     private static int contadorIntentos;
     private static int contadorAyudas;
     
     public void generarCodigo(){
-        //genera el codigo secreto.
+        Random random = new Random();
+        codigoSecreto = random.nextInt(900) + 100;
     }
     
     public void esMayor(int intento){
