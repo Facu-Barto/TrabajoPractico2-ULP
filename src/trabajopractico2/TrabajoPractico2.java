@@ -4,5 +4,6 @@ public class TrabajoPractico2 {
 
     public static void main(String[] args) {
         System.out.println("facu gei");
+        System.out.println("medina gei tambien");
     }
 }
