@@ -4,12 +4,18 @@ import java.util.Random;
 
 public class LogicaCodigoSecreto {
     private int codigoSecreto;
-    private static int contadorIntentos;
-    private static int contadorAyudas;
+    private static int contadorIntentos = 0;
+    private static int contadorAyudas = 0;
     
     public void generarCodigo(){
         Random random = new Random();
         codigoSecreto = random.nextInt(900) + 100;
+    }
+    
+    //Devuelve el numero de una poscion(uso del botón Revelar o cuando el usuario acierta la posición)
+    public char obtenerUnDigito(int posicion){
+        String codigoSecretoString = String.valueOf(this.codigoSecreto);
+        return codigoSecretoString.charAt(posicion);
     }
     
     public void esMayor(int intento){
@@ -20,10 +26,7 @@ public class LogicaCodigoSecreto {
         //Verifica si adivinó el número
     }
     
-    public int revelarNumero(int posicion){
-        //Devuelve el numero de una poscion(uso del botón Revelar o cuando el usuario acierta la posición)
-        return 0;
-    }
+    
     
     public int puedeUsarAyuda(){
         //Se fija si la variable contadorAyudas es menor a 2.
