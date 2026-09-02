@@ -3,17 +3,19 @@ package trabajopractico2;
 public class GUICodigoSecreto extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUICodigoSecreto.class.getName());
-    
     private LogicaCodigoSecreto logica = new LogicaCodigoSecreto();
+    
     /**
      * Creates new form GUICodigoSecreto
      */
     public GUICodigoSecreto() {
         initComponents();
         
-//        digito1.setText(String.valueOf(logica.obtenerUnDigito(0)));
-//        digito2.setText(String.valueOf(logica.obtenerUnDigito(1)));
-//        digito3.setText(String.valueOf(logica.obtenerUnDigito(2)));
+        logica.generarCodigo();
+        
+        digito1.setText(String.valueOf(logica.obtenerUnDigito(0)));
+        digito2.setText(String.valueOf(logica.obtenerUnDigito(1)));
+        digito3.setText(String.valueOf(logica.obtenerUnDigito(2)));
     }
 
     /**
@@ -41,7 +43,7 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
         setTitle("El Codigo Secreto");
         setResizable(false);
 
-        jDesktopPane1.setBackground(new java.awt.Color(51, 51, 51));
+        jDesktopPane1.setBackground(new java.awt.Color(255, 123, 123));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -91,6 +93,9 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
                 .addComponent(digito3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {digito1, digito2, digito3});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -101,6 +106,8 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
                     .addComponent(digito1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {digito1, digito2, digito3});
 
         botonRevelar.setBackground(new java.awt.Color(220, 245, 250));
         botonRevelar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
@@ -114,12 +121,12 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
         PistaMayorOMenor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PistaMayorOMenor.setText("Necesitas una pista?");
 
-        titulo.setBackground(new java.awt.Color(255, 255, 255));
+        titulo.setBackground(new java.awt.Color(0, 0, 0));
         titulo.setFont(new java.awt.Font("Colonna MT", 0, 60)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 51, 51));
+        titulo.setForeground(new java.awt.Color(0, 0, 0));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("El Codigo Secreto");
-        titulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        titulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtIntento.setColumns(1);
         txtIntento.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
@@ -149,16 +156,10 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                            .addGap(168, 168, 168)
-                            .addComponent(PistaMayorOMenor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
                         .addComponent(Trofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -175,6 +176,10 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
                             .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonRevelar))
                         .addGap(200, 200, 200))))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PistaMayorOMenor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +230,17 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
     }//GEN-LAST:event_digito1ActionPerformed
 
     private void botonRevelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRevelarActionPerformed
-        // TODO add your handling code here:
+        int posicion = logica.puedeUsarAyuda();
+        
+        if (posicion == 0){
+            digito1.setEchoChar((char)0);
+            PistaMayorOMenor.setText("Se reveló el Primer Numero.");
+        } else if (posicion == 1){
+            digito2.setEchoChar((char)0);
+            PistaMayorOMenor.setText("Se reveló el Segundo Numero.");
+        } else {
+            PistaMayorOMenor.setText("Ya no te quedan mas revelaciones.");
+        }
     }//GEN-LAST:event_botonRevelarActionPerformed
 
     private void digito2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digito2ActionPerformed
@@ -233,7 +248,7 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
     }//GEN-LAST:event_digito2ActionPerformed
 
     private void txtIntentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIntentoKeyPressed
-  
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtIntentoKeyPressed
 
     private void digito3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digito3ActionPerformed
@@ -243,25 +258,23 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
     private void txtIntentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIntentoActionPerformed
         // TODO add your handling code here:
         String textUser= txtIntento.getText(); 
-        char digitoUser1 = textUser.charAt(0);
-        char digitoUser2 = textUser.charAt(1);
-        char digitoUser3 = textUser.charAt(2);
-         Comparacion(digitoUser1,digitoUser2,digitoUser3);
-         if(Comparacion(digitoUser1,digitoUser2,digitoUser3)==true){
-             resultado.setText("CORRECTO!!");
-         } 
+        
+        if (textUser.length() == 3){
+            int numUser = Integer.parseInt(textUser);
+            char digitoUser1 = textUser.charAt(0);
+            char digitoUser2 = textUser.charAt(1);
+            char digitoUser3 = textUser.charAt(2);
+            
+            if(logica.comparacion(digitoUser1,digitoUser2,digitoUser3)){
+                PistaMayorOMenor.setText("CORRECTO!!");
+            } else if (numUser > logica.getCodigoSecreto()){
+                PistaMayorOMenor.setText("El numero secreto es menor.");
+            } else PistaMayorOMenor.setText("El numero secreto es mayor.");
+        } else {
+            PistaMayorOMenor.setText("Escribe 3 digitos porfavor");
+        }
     }//GEN-LAST:event_txtIntentoActionPerformed
 
-    public boolean Comparacion(char c1, char c2, char c3){
-        
-        if(c1==logica.obtenerUnDigito(0) && c2==logica.obtenerUnDigito(1) && c3==logica.obtenerUnDigito(2)){
-            return true;
-        } else{
-            return false;
-        }
-    }
-    
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
