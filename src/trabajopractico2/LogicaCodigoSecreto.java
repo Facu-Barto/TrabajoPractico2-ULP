@@ -10,6 +10,7 @@ public class LogicaCodigoSecreto {
     public void generarCodigo(){
         Random random = new Random();
         codigoSecreto = random.nextInt(900) + 100;
+        System.out.println(codigoSecreto);
     }
     
     //Devuelve el numero de una poscion(uso del botón Revelar o cuando el usuario acierta la posición)
@@ -31,5 +32,5 @@ public class LogicaCodigoSecreto {
     public int puedeUsarAyuda(){
         //Se fija si la variable contadorAyudas es menor a 2.
         return 0;
-    } 
+    }                                                                           
 }

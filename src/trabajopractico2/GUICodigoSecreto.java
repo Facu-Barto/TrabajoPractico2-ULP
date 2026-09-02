@@ -11,9 +11,9 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
     public GUICodigoSecreto() {
         initComponents();
         
-        digito1.setText(String.valueOf(logica.obtenerUnDigito(0)));
-        digito2.setText(String.valueOf(logica.obtenerUnDigito(1)));
-        digito3.setText(String.valueOf(logica.obtenerUnDigito(2)));
+//        digito1.setText(String.valueOf(logica.obtenerUnDigito(0)));
+//        digito2.setText(String.valueOf(logica.obtenerUnDigito(1)));
+//        digito3.setText(String.valueOf(logica.obtenerUnDigito(2)));
     }
 
     /**
@@ -35,6 +35,7 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
         PistaMayorOMenor = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
         txtIntento = new javax.swing.JTextField();
+        resultado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("El Codigo Secreto");
@@ -65,6 +66,7 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
         digito3.setToolTipText("");
         digito3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         digito3.setEchoChar('$');
+        digito3.addActionListener(this::digito3ActionPerformed);
 
         digito2.setEditable(false);
         digito2.setBackground(new java.awt.Color(204, 204, 204));
@@ -125,11 +127,14 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
         txtIntento.setToolTipText("");
         txtIntento.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true), "Escribe 3 digitos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM));
         txtIntento.setName(""); // NOI18N
+        txtIntento.addActionListener(this::txtIntentoActionPerformed);
         txtIntento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtIntentoKeyPressed(evt);
             }
         });
+
+        resultado.setBackground(new java.awt.Color(255, 51, 51));
 
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(botonRevelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -137,21 +142,23 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
         jDesktopPane1.setLayer(PistaMayorOMenor, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(titulo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtIntento, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(resultado, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                            .addGap(12, 12, 12)
+                            .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                            .addGap(168, 168, 168)
+                            .addComponent(PistaMayorOMenor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(PistaMayorOMenor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(206, 206, 206)
                         .addComponent(Trofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -164,7 +171,9 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(txtIntento, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(botonRevelar)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonRevelar))
                         .addGap(200, 200, 200))))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -184,7 +193,9 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addComponent(botonRevelar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(Trofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Trofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
@@ -222,9 +233,35 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
     }//GEN-LAST:event_digito2ActionPerformed
 
     private void txtIntentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIntentoKeyPressed
-        if (evt.getKeyCode() == )
+  
     }//GEN-LAST:event_txtIntentoKeyPressed
 
+    private void digito3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digito3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_digito3ActionPerformed
+
+    private void txtIntentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIntentoActionPerformed
+        // TODO add your handling code here:
+        String textUser= txtIntento.getText(); 
+        char digitoUser1 = textUser.charAt(0);
+        char digitoUser2 = textUser.charAt(1);
+        char digitoUser3 = textUser.charAt(2);
+         Comparacion(digitoUser1,digitoUser2,digitoUser3);
+         if(Comparacion(digitoUser1,digitoUser2,digitoUser3)==true){
+             resultado.setText("CORRECTO!!");
+         } 
+    }//GEN-LAST:event_txtIntentoActionPerformed
+
+    public boolean Comparacion(char c1, char c2, char c3){
+        
+        if(c1==logica.obtenerUnDigito(0) && c2==logica.obtenerUnDigito(1) && c3==logica.obtenerUnDigito(2)){
+            return true;
+        } else{
+            return false;
+        }
+    }
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -256,6 +293,7 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
     private javax.swing.JPasswordField digito3;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel resultado;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtIntento;
     // End of variables declaration//GEN-END:variables
