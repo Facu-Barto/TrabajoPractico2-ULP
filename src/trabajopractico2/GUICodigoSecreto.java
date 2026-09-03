@@ -48,8 +48,6 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
         setTitle("El Codigo Secreto");
         setResizable(false);
 
-        jDesktopPane1.setBackground(new java.awt.Color(30, 49, 110));
-
         jPanel1.setBackground(new java.awt.Color(240, 103, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jPanel1.setForeground(new java.awt.Color(240, 103, 0));
@@ -126,7 +124,7 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
         PistaMayorOMenor.setText("Necesitas una pista?");
 
         titulo.setBackground(new java.awt.Color(240, 103, 0));
-        titulo.setFont(new java.awt.Font("Colonna MT", 0, 60)); // NOI18N
+        titulo.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 42)); // NOI18N
         titulo.setForeground(new java.awt.Color(240, 103, 0));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("El Codigo Secreto");
@@ -264,11 +262,9 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
             char digitoUser3 = textUser.charAt(2);
 
             if (logica.comparacion(digitoUser1, digitoUser2, digitoUser3)) {
-                String mensaje = " ¡Ganaste!\n"
-                        + "Código correcto: " + logica.getCodigoSecreto() + "\n"
-                        + "Intentos totales: " + logica.getContadorIntentos();
-                String titulo = "Victoria";
-                JOptionPane.showMessageDialog(this, mensaje, titulo, WIDTH);
+                digito1.setEchoChar((char) 0);
+                digito2.setEchoChar((char) 0);
+                digito3.setEchoChar((char) 0);
                 try {
                     URL url = new java.net.URL("https://images.vexels.com/media/users/3/202189/isolated/lists/4f3a5cb84297726d74d69dce22676f83-trofeo-numero-1-plano.png");
                     ImageIcon icon = new javax.swing.ImageIcon(url);
@@ -280,6 +276,11 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
                 } catch (Exception e) {
                     System.out.println("Error al cargar la imagen: " + e.getMessage());
                 }
+                String mensaje = " ¡Ganaste!\n"
+                        + "Código correcto: " + logica.getCodigoSecreto() + "\n"
+                        + "Intentos totales: " + logica.getContadorIntentos();
+                String titulo = "Victoria";
+                JOptionPane.showMessageDialog(this, mensaje, titulo, WIDTH);
             } else if (numUser > logica.getCodigoSecreto()) {
                 PistaMayorOMenor.setText("El numero secreto es menor.");
             } else {
