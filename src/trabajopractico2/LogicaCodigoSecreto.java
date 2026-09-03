@@ -47,7 +47,7 @@ public class LogicaCodigoSecreto {
     
     //compara el codigoSecreto con el codigo que ingresa el usuario.
     public boolean comparacion(char c1, char c2, char c3){
-        return c1 == obtenerUnDigito(0) && c1 == obtenerUnDigito(1) && c1 == obtenerUnDigito(2);
+        return c1 == obtenerUnDigito(0) && c2 == obtenerUnDigito(1) && c3 == obtenerUnDigito(2);
     }
     
     //Verifica que el contadorAyudas sea menor a 2.
