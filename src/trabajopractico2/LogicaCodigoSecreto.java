@@ -1,10 +1,11 @@
 package trabajopractico2;
 
 import java.util.Random;
+import java.util.logging.Logger;
 
 public class LogicaCodigoSecreto {
     private int codigoSecreto;
-    private static int contadorIntentos = 0;
+    private int contadorIntentos = 0;
     private static int contadorAyudas = 0;
 
     public int getCodigoSecreto() {
@@ -15,13 +16,16 @@ public class LogicaCodigoSecreto {
         this.codigoSecreto = codigoSecreto;
     }
 
-    public static int getContadorIntentos() {
+    public  int getContadorIntentos() {
         return contadorIntentos;
     }
 
-    public static void setContadorIntentos(int contadorIntentos) {
-        LogicaCodigoSecreto.contadorIntentos = contadorIntentos;
+    public void setContadorIntentos(int contadorIntentos) {
+        this.contadorIntentos = contadorIntentos;
     }
+   
+
+    
 
     public static int getContadorAyudas() {
         return contadorAyudas;
@@ -58,7 +62,11 @@ public class LogicaCodigoSecreto {
             return posicionRevelar;
         } else return -1;
     }       
-
+    
+    public void sumarContador(){
+        this.contadorIntentos++;
+        System.out.println("Contador intentos: "+ contadorIntentos);
+    }
     public void esMayor(int intento){
         //Retorna true o false para saber si el código es mayor o menor a lo que puso el usuario.
     }

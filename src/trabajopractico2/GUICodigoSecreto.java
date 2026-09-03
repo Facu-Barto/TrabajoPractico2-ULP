@@ -3,6 +3,8 @@ package trabajopractico2;
 import java.awt.Image;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class GUICodigoSecreto extends javax.swing.JFrame {
 
@@ -242,7 +244,7 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
             digito2.setEchoChar((char)0);
             PistaMayorOMenor.setText("Se reveló el Segundo Numero.");
         } else {
-            PistaMayorOMenor.setText("Ya no te quedan mas revelaciones.");
+            JOptionPane.showMessageDialog(this, "No hay mas Revelaciones!");
         }
     }//GEN-LAST:event_botonRevelarActionPerformed
 
@@ -261,7 +263,7 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
     private void txtIntentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIntentoActionPerformed
         // TODO add your handling code here:
         String textUser= txtIntento.getText(); 
-        
+        logica.sumarContador();
         if (textUser.length() == 3){
             int numUser = Integer.parseInt(textUser);
             char digitoUser1 = textUser.charAt(0);
@@ -269,7 +271,11 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
             char digitoUser3 = textUser.charAt(2);
             
             if(logica.comparacion(digitoUser1,digitoUser2,digitoUser3)){
-                PistaMayorOMenor.setText("CORRECTO!!");
+                String mensaje = " ¡Ganaste!\n"
+                       + "Código correcto: " + logica.getCodigoSecreto() + "\n"
+                       + "Intentos totales: " + logica.getContadorIntentos();
+                String titulo = "Victoria";
+                JOptionPane.showMessageDialog(this, mensaje,titulo , WIDTH);
                 try {
    URL url = new java.net.URL("https://images.vexels.com/media/users/3/202189/isolated/lists/4f3a5cb84297726d74d69dce22676f83-trofeo-numero-1-plano.png");
    ImageIcon icon = new javax.swing.ImageIcon(url);
