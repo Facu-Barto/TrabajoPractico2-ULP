@@ -1,5 +1,9 @@
 package trabajopractico2;
 
+import java.awt.Image;
+import java.net.URL;
+import javax.swing.ImageIcon;
+
 public class GUICodigoSecreto extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUICodigoSecreto.class.getName());
@@ -33,11 +37,11 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
         digito3 = new javax.swing.JPasswordField();
         digito2 = new javax.swing.JPasswordField();
         botonRevelar = new javax.swing.JButton();
-        Trofeo = new javax.swing.JLabel();
         PistaMayorOMenor = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
         txtIntento = new javax.swing.JTextField();
         resultado = new javax.swing.JLabel();
+        Trofeo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("El Codigo Secreto");
@@ -115,8 +119,6 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
         botonRevelar.setText(" Revelar Numero");
         botonRevelar.addActionListener(this::botonRevelarActionPerformed);
 
-        Trofeo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         PistaMayorOMenor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PistaMayorOMenor.setText("Necesitas una pista?");
 
@@ -144,11 +146,11 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
 
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(botonRevelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(Trofeo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(PistaMayorOMenor, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(titulo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtIntento, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(resultado, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(Trofeo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -166,20 +168,21 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
                         .addGap(120, 120, 120))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(txtIntento, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(botonRevelar)
-                                .addGap(200, 200, 200))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Trofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonRevelar)
+                        .addGap(205, 205, 205))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Trofeo)
+                .addGap(50, 50, 50))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(PistaMayorOMenor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,20 +191,20 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PistaMayorOMenor)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(30, 30, 30)
                         .addComponent(txtIntento, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(botonRevelar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Trofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                        .addGap(53, 53, 53)
+                        .addComponent(botonRevelar)
+                        .addGap(27, 27, 27)
+                        .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(Trofeo)
+                .addGap(68, 68, 68))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -267,6 +270,17 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
             
             if(logica.comparacion(digitoUser1,digitoUser2,digitoUser3)){
                 PistaMayorOMenor.setText("CORRECTO!!");
+                try {
+   URL url = new java.net.URL("https://images.vexels.com/media/users/3/202189/isolated/lists/4f3a5cb84297726d74d69dce22676f83-trofeo-numero-1-plano.png");
+   ImageIcon icon = new javax.swing.ImageIcon(url);
+    Image img = icon.getImage().getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH);
+    
+    Trofeo.setText(""); 
+    Trofeo.setIcon(new javax.swing.ImageIcon(img));
+    Trofeo.setVisible(true);
+} catch (Exception e) {
+    System.out.println("Error al cargar la imagen: " + e.getMessage());
+}
             } else if (numUser > logica.getCodigoSecreto()){
                 PistaMayorOMenor.setText("El numero secreto es menor.");
             } else PistaMayorOMenor.setText("El numero secreto es mayor.");
