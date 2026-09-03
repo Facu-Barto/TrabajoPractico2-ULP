@@ -254,8 +254,8 @@ public class GUICodigoSecreto extends javax.swing.JFrame {
     private void txtIntentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIntentoActionPerformed
         // TODO add your handling code here:
         String textUser = txtIntento.getText();
-        logica.sumarContador();
         if (textUser.length() == 3) {
+            logica.sumarContador();
             int numUser = Integer.parseInt(textUser);
             char digitoUser1 = textUser.charAt(0);
             char digitoUser2 = textUser.charAt(1);
